@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sushant Kumar | Projects</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --orange: #ff6a00;
+      --orange-light: #ff8c32;
+      --black: #080808;
+      --dark: #101010;
+      --card: #151515;
+      --border: #333;
+      --white: #fff;
+      --gray: #a5a5a5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background:
+        linear-gradient(135deg, rgba(255,106,0,0.04) 25%, transparent 25%) 0 0/40px 40px,
+        #070707;
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .site-wrapper {
+      width: min(1180px, 94%);
+      margin: 35px auto;
+      border: 2px solid #3a3a3a;
+      border-radius: 18px;
+      background: rgba(16,16,16,0.96);
+      box-shadow: 0 0 50px rgba(255,106,0,0.08);
+      overflow: hidden;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    nav {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 45px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,8,8,0.95);
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--orange);
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ddd;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: var(--orange);
+    }
+
+    .hire-btn {
+      padding: 11px 20px;
+      border-radius: 8px;
+      background: var(--orange);
+      color: white !important;
+      font-weight: 600;
+    }
+
+    .hire-btn:hover {
+      background: var(--orange-light);
+      transform: translateY(-2px);
+    }
+
+    /* ================= HEADER ================= */
+
+    .page-header {
+      text-align: center;
+      padding: 75px 20px 45px;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: var(--orange);
+      filter: blur(150px);
+      opacity: 0.08;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .small-title {
+      color: var(--orange);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .page-header h1 {
+      font-size: clamp(35px, 6vw, 58px);
+      margin-top: 10px;
+      font-weight: 800;
+      position: relative;
+    }
+
+    .page-header h1 span {
+      color: var(--orange);
+    }
+
+    .page-header p {
+      max-width: 650px;
+      margin: 15px auto 0;
+      color: var(--gray);
+      font-size: 15px;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    /* ================= PROJECT GRID ================= */
+
+    .projects-section {
+      padding: 20px 45px 70px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .project-card {
+      background: linear-gradient(145deg, #171717, #0f0f0f);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: 0.4s ease;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--orange);
+      box-shadow: 0 15px 40px rgba(255,106,0,0.14);
+    }
+
+    /* ================= PROJECT IMAGE ================= */
+
+    .project-image {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+      background: #111;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: 0.5s ease;
+    }
+
+    .project-card:hover .project-image img {
+      transform: scale(1.08);
+    }
+
+    .image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.85),
+        rgba(0,0,0,0.05)
+      );
+    }
+
+    .project-number {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      z-index: 2;
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(255,106,0,0.12);
+      border: 1px solid rgba(255,106,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      font-size: 21px;
+      margin-bottom: 15px;
+    }
+
+    .project-content h2 {
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: var(--gray);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tech-stack span {
+      padding: 6px 11px;
+      background: #202020;
+      border: 1px solid #333;
+      border-radius: 20px;
+      color: #ddd;
+      font-size: 11px;
+    }
+
+    .tech-stack span:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    .project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 17px;
+      border: 1px solid var(--orange);
+      border-radius: 7px;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .project-btn:hover {
+      background: var(--orange);
+      color: white;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 25px 45px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--gray);
+      font-size: 13px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-social a {
+      width: 35px;
+      height: 35px;
+      border: 1px solid #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      transform: translateY(-3px);
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 850px) {
+
+      nav {
+        padding: 0 25px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .projects-section {
+        padding: 20px 25px 50px;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .site-wrapper {
+        width: 96%;
+        margin: 15px auto;
+      }
+
+      nav {
+        height: auto;
+        padding: 20px;
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hire-btn {
+        display: none;
+      }
+
+      .page-header {
+        padding: 55px 20px 35px;
+      }
+
+      .project-image {
+        height: 200px;
+      }
+
+      footer {
+        padding: 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="site-wrapper">
+
+  <!-- ================= NAVBAR ================= -->
+
+  <nav>
+    <a href="index.html" class="logo">SUSHANT.</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="experience.html">Experience</a></li>
+      <li><a href="index.html#contact" class="hire-btn">Hire Me</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ================= PAGE HEADER ================= -->
+
+  <header class="page-header">
+
+    <div class="small-title">My Work</div>
+
+    <h1>Featured <span>Projects</span></h1>
+
+    <p>
+      A collection of projects built using Data Analytics,
+      Machine Learning, Web Development and modern technologies.
+    </p>
+
+  </header>
+
+
+  <!-- ================= PROJECTS ================= -->
+
+  <section class="projects-section">
+
+    <div class="projects-grid">
+
+
+      <!-- PROJECT 1 -->
+
+      <div class="project-card">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1200&q=80"
+            alt="AI and Machine Learning">
+
+          <div class="image-overlay"></div>
+
+          <div class="project-number">01</div>
+
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <h2>Fake Internship & Scam Job Detection</h2>
+
+          <p>
+            A machine learning project designed to detect potentially
+            fake internships and scam job postings using data analysis,
+            NLP and classification techniques.
+          </p>
+
+          <div class="tech-stack">
+            <span>Python</span>
+            <span>Machine Learning</span>
+            <span>NLP</span>
+          </div>
+
+          <a href="https://github.com/sushx4"
+             target="_blank"
+             class="project-btn">
+            View Project
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+        </div>
+      </div>
+
+
+      <!-- PROJECT 2 -->
+
+      <div class="project-card">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+            alt="Data Analytics Dashboard">
+
+          <div class="image-overlay"></div>
+
+          <div class="project-number">02</div>
+
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-icon">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+
+          <h2>Vrinda Store Data Analysis</h2>
+
+          <p>
+            An e-commerce sales analysis project focused on finding
+            sales trends, customer insights and business performance
+            using data visualization.
+          </p>
+
+          <div class="tech-stack">
+            <span>Excel</span>
+            <span>Data Analysis</span>
+            <span>Visualization</span>
+          </div>
+
+          <a href="https://github.com/sushx4"
+             target="_blank"
+             class="project-btn">
+            View Project
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+        </div>
+      </div>
+
+
+      <!-- PROJECT 3 -->
+
+      <div class="project-card">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80"
+            alt="Music streaming">
+
+          <div class="image-overlay"></div>
+
+          <div class="project-number">03</div>
+
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-icon">
+            <i class="fa-solid fa-music"></i>
+          </div>
+
+          <h2>Spotify Clone</h2>
+
+          <p>
+            A responsive music streaming interface inspired by modern
+            music platforms, created using frontend technologies.
+          </p>
+
+          <div class="tech-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+
+          <a href="https://github.com/sushx4"
+             target="_blank"
+             class="project-btn">
+            View Project
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+        </div>
+      </div>
+
+
+      <!-- PROJECT 4 -->
+
+      <div class="project-card">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=1200&q=80"
+            alt="QR Code">
+
+          <div class="image-overlay"></div>
+
+          <div class="project-number">04</div>
+
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-icon">
+            <i class="fa-solid fa-qrcode"></i>
+          </div>
+
+          <h2>QR Generator</h2>
+
+          <p>
+            A simple and responsive web application that generates
+            QR codes from user-provided text or links.
+          </p>
+
+          <div class="tech-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+
+          <a href="https://github.com/sushx4"
+             target="_blank"
+             class="project-btn">
+            View Project
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+        </div>
+      </div>
+
+
+      <!-- PROJECT 5 -->
+
+      <div class="project-card">
+
+        <div class="project-image">
+
+          <img
+            src="https://images.unsplash.com/photo-1587145820266-a5951ee6f620?auto=format&fit=crop&w=1200&q=80"
+            alt="Calculator">
+
+          <div class="image-overlay"></div>
+
+          <div class="project-number">05</div>
+
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-icon">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+
+          <h2>Calculator</h2>
+
+          <p>
+            A clean and responsive calculator application with a
+            simple user interface and JavaScript-based calculations.
+          </p>
+
+          <div class="tech-stack">
+            <span>HTML</span>
+            <span>CSS</span>
+            <span>JavaScript</span>
+          </div>
+
+          <a href="https://github.com/sushx4"
+             target="_blank"
+             class="project-btn">
+            View Project
+            <i class="fa-brands fa-github"></i>
+          </a>
+
+        </div>
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div>
+      © 2026 Sushant Kumar. All Rights Reserved.
+    </div>
+
+    <div class="footer-social">
+
+      <a href="https://www.linkedin.com/in/sushant-kumar-753501326/"
+         target="_blank">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
+
+      <a href="https://github.com/sushx4"
+         target="_blank">
+        <i class="fa-brands fa-github"></i>
+      </a>
+
+      <a href="mailto:sushantgkumar9798@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+
+    </div>
+
+  </footer>
+
+</div>
+
+</body>
+</html>
